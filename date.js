@@ -64,13 +64,17 @@ const sort_date = (firstDate, secondDate) => {
 	return { highestDate: highestDate, lowestDate: lowestDate };
 };
 
+const is_leap_year = (year) => {
+	 return true ? ((year % 400 === 0) || (year % 100 !== 0)) && ((year % 4) == 0) : false; 
+	}
+
 const calculate_days_after = (date) => {
 	let newDate = date.split('-');
 	let day = parseInt(newDate[0]);
 	let month = parseInt(newDate[1]);
 	let year = parseInt(newDate[2]);
 	let remainingMonth = 12 - month;
-	let is_leap_year = year % 4 == 0 ? true : false;
+	let is_leap_year = is_leap_year(year);
 
 	let totalDays = 0;
 
